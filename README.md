@@ -1,42 +1,60 @@
-# PROJETO-IA-GERADORA-DE-COD 
-📌 Visão Geral
-Este projeto implementa um sistema capaz de gerar código CSS automaticamente a partir de comandos escritos em linguagem natural, utilizando integração com Inteligência Artificial. A solução foi desenvolvida com HTML5, CSS e Java, e conectada ao serviço Groq, garantindo alta performance e escalabilidade no processamento das requisições.
+# PROJETO-IA-GERADORA-DE-COD
 
-🚀 Principais Funcionalidades
-Interpretação de comandos textuais e conversão em código CSS válido.
+## 📌 Visão Geral
+Este projeto implementa um sistema capaz de gerar código HTML e CSS automaticamente a partir de comandos escritos em linguagem natural, utilizando integração com Inteligência Artificial. A solução foi desenvolvida com HTML5, CSS3 e Node.js, conectada ao serviço Groq e hospedada na nuvem via Railway.
 
-Integração com IA para geração de estilos dinâmicos e responsivos.
+## 🚀 Principais Funcionalidades
+- Interpretação de comandos textuais e conversão em código HTML e CSS válido.
+- Integração com IA para geração de estilos dinâmicos e responsivos.
+- Backend em Node.js com Express, garantindo segurança da chave API.
+- Conexão com Groq API utilizando o modelo `llama-3.3-70b-versatile`.
+- Servidor hospedado 24/7 no Railway, acessível sem necessidade de rodar localmente.
 
-Estrutura modular baseada em HTML5 e CSS3, seguindo boas práticas de desenvolvimento.
+## 🛠️ Tecnologias Utilizadas
+- HTML5
+- CSS3
+- JavaScript
+- Node.js + Express
+- Groq API
+- Railway (hospedagem do backend)
 
-Backend implementado em Java, assegurando robustez e confiabilidade.
+## 🔒 Segurança
+A chave da API Groq **nunca fica exposta no frontend**. Ela é armazenada como variável de ambiente no Railway e utilizada exclusivamente pelo servidor backend.
 
-Conexão com Groq API, otimizando o desempenho e reduzindo a latência.
+## 📖 Instalação e Uso Local
 
-🛠️ Tecnologias Utilizadas
-HTML5
-
-CSS3
-
-Java
-
-Groq API
-
-📖 Instalação e Uso
 Clone este repositório:
+```bash
+git clone https://github.com/rogerrrmoreira/PROJETO-IA-GERADORA-DE-COD.git
+```
 
-bash
-git clone https://github.com/seuusuario/PROJETO-IA-GERADORA-DE-COD.git
-Configure o ambiente Java e instale as dependências necessárias.
+Instale as dependências:
+```bash
+npm install
+```
 
-Execute o projeto e insira comandos em linguagem natural para gerar automaticamente o código CSS correspondente.
+Crie um arquivo `.env` na raiz do projeto:
+```
+GROQ_API_KEY=sua_chave_aqui
+```
 
-🧩 Exemplo Prático
-Entrada (Comando em linguagem natural):
-Código
+Inicie o servidor:
+```bash
+node server.js
+```
+
+Abra o `index.html` no navegador.
+
+## 🧩 Exemplo Prático
+
+**Entrada (Comando em linguagem natural):**
+```
 Criar um botão azul com bordas arredondadas e efeito hover que muda para verde.
-Saída (Código CSS gerado):
-css
+```
+
+**Saída (Código gerado):**
+```html
+<style>
 button {
   background-color: blue;
   color: white;
@@ -46,57 +64,29 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 button:hover {
   background-color: green;
 }
-Este exemplo demonstra como o sistema interpreta instruções simples e as converte em código CSS funcional e pronto para uso.
+</style>
+<button>Clique aqui</button>
+```
 
-🎯 Objetivo
-O projeto busca otimizar o fluxo de trabalho de desenvolvedores front-end, permitindo que estilos sejam criados de forma rápida e precisa, sem necessidade de escrever manualmente cada regra CSS.
+## 🎯 Objetivo
+Otimizar o fluxo de trabalho de desenvolvedores front-end, permitindo que estilos e estruturas sejam criados de forma rápida a partir de linguagem natural.
 
-📌 Contribuições
-Contribuições são encorajadas. Para colaborar:
+## 🏗️ Arquitetura do Sistema
 
-Abra uma issue descrevendo melhorias ou correções.
+```
+Usuário (Frontend) → Servidor Node.js (Railway) → Groq API
+                            ↑
+                   Chave API segura aqui
+```
 
-Envie um pull request com alterações propostas.
+**Frontend (HTML5 + CSS3 + JS):** Interface do usuário, envia comandos ao backend.
 
-🏗️ Arquitetura do Sistema
-A solução foi projetada de forma modular, garantindo escalabilidade, desempenho e clareza estrutural. A arquitetura pode ser descrita da seguinte forma:
+**Backend (Node.js + Express):** Recebe as requisições, chama a Groq API com segurança e retorna o código gerado.
 
-Frontend (HTML5 + CSS3)
+**Groq API:** Processa o comando em linguagem natural e retorna o código HTML/CSS correspondente.
 
-Responsável pela interface do usuário.
-
-Permite a entrada de comandos em linguagem natural.
-
-Exibe o código CSS gerado de forma organizada e pronta para uso.
-
-Backend (Java)
-
-Processa as requisições recebidas do frontend.
-
-Gerencia a comunicação com a Groq API.
-
-Implementa lógica de negócio para validação e formatação do código CSS.
-
-Integração com Groq
-
-Serviço de IA utilizado para interpretar comandos textuais.
-
-Converte instruções em linguagem natural em regras CSS válidas.
-
-Garante alta performance e baixa latência no processamento.
-
-Fluxo de Dados
-
-O usuário insere um comando no frontend.
-
-O backend em Java envia a requisição para a Groq API.
-
-A IA processa o comando e retorna o código CSS correspondente.
-
-O backend valida e entrega o resultado ao frontend.
-
-O código CSS é exibido ao usuário para utilização imediata.
+## 📌 Contribuições
+Contribuições são encorajadas! Para colaborar, abra uma issue descrevendo melhorias ou envie um pull request com as alterações propostas.

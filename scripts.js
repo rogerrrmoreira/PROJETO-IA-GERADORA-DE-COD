@@ -1,40 +1,28 @@
 let botao = document.querySelector(".botao-gerar");
-let chave = "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"
-let endereco = "https://api.groq.com/openai/v1/chat/completions"
 
 async function gerarCodigo() {
-
     let texto = document.querySelector(".textarea").value;
     let blocoCodigo = document.querySelector(".bloco-codigo");
     let resultadoCodigo = document.querySelector(".resultado-codigo");  
 
-    let resposta = await fetch (endereco, {
+    let resposta = await fetch("http://localhost:3000/gerar", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer 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"
+            "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            model: "llama-3.3-70b-versatile",
-            messages: [
-            {
-                role: "system",
-                content: "Você é um gerador de código HTML e CSS. Responda SOMENTE com código puro. NUNCA use crases, markdown ou explicações. Formato: primeiro <style> com o CSS, depois o HTML. Siga EXATAMENTE o que o usuário pedir. Se pedir algo quicando, use translateY no @keyframes. Se pedir algo girando, use rotate."
-            },
-            {
-                role: "user",
-                content: texto
-            }
-            ]
-        })
-    })
+        body: JSON.stringify({ texto })
+    });
 
     let dados = await resposta.json();
-    let resultado = dados.choices[0].message.content;
 
+    if (dados.erro) {
+        alert("Erro: " + dados.erro);
+        return;
+    }
+
+    let resultado = dados.resultado;
     blocoCodigo.textContent = resultado;
     resultadoCodigo.srcdoc = resultado;
-
 }
 
 botao.addEventListener("click", gerarCodigo);
